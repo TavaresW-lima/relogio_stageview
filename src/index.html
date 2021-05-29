@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title> Projeto Relogio </title>
+        <meta charset="utf-8">
+        <meta name="author" content="William Tavares">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="css/estilo_Relogio.css">
+        <script src="https://kit.fontawesome.com/dea90e7a9c.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+		<script type="text/javascript">
+			jQuery(window).load(function($){
+				atualizaRelogio();
+			});
+        </script>
+        <style>
+            #fullscreen{
+                position:absolute;
+                bottom: 50;
+            }
+        
+        </style>
+    </head>
+    <body>
+    <div class="bg_image">
+        <div class="wrapper">
+        <div id="demo"></div>
+        <div id="data"></div>
+        <button id="Fullscreen" onClick="launchIntoFullscreen(document.documentElement)"></button>
+        </div>
+    </div>
+    </body>
+    <script>
+        
+    //         Fullscreen       ***********************************************
+    function launchIntoFullscreen(element) {
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }    
+    //*************************************************************************
+        
+    var myVar = setInterval(myTimer ,1000);
+    
+    function myTimer() {
+        var d = new Date(), displayDate;
+       if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+          displayDate = d.toLocaleTimeString('pt-BR');
+       } else {
+          displayDate = d.toLocaleTimeString('pt-BR', {timeZone: 'America/Belem'});
+       }
+          document.getElementById("demo").innerHTML = displayDate;
+    }
+    function atualizaRelogio(){ 
+			var momentoAtual = new Date();
+			
+			var vhora = momentoAtual.getHours();
+			var vminuto = momentoAtual.getMinutes();
+			var vsegundo = momentoAtual.getSeconds();
+			
+			var vdata = momentoAtual.getDate();
+            var vdia = momentoAtual.getDay();
+			var vmes = momentoAtual.getMonth() + 1;
+			var vano = momentoAtual.getFullYear();
+        
+            nomeMes = "";
+            nomeDia = "";
+        
+			if (vdata < 10){ vdata = "0" + vdata;}
+			if (vhora < 10){ vhora = "0" + vhora;}
+			if (vminuto < 10){ vminuto = "0" + vminuto;}
+			if (vsegundo < 10){ vsegundo = "0" + vsegundo;}
+        
+            switch (vmes){
+                case 1:
+                    nomeMes = "janeiro"
+                    break;
+                case 2:
+                    nomeMes = "fevereiro"
+                    break;
+                case 3:
+                    nomeMes = "março"
+                    break;
+                case 4:
+                    nomeMes = "abril"
+                    break;
+                case 5:
+                    nomeMes = "maio"
+                    break;
+                case 6:
+                    nomeMes = "junho"
+                    break;
+                case 7:
+                    nomeMes = "julho"
+                    break;
+                case 8:
+                    nomeMes = "agosto"
+                    break;
+                case 9:
+                    nomeMes = "setembro"
+                    break;
+                case 10:
+                    nomeMes = "outubro"
+                    break;
+                case 11:
+                    nomeMes = "novembro"
+                    break;
+                case 12:
+                    nomeMes = "dezembro"
+            }
+        
+            switch(vdia){
+                case 0:
+                    nomeDia = "Domingo"
+                    break;
+                case 1:
+                    nomeDia = "Segunda"
+                    break;
+                case 2:
+                    nomeDia = "Terça"
+                    break;
+                case 3:
+                    nomeDia = "Quarta"
+                    break;
+                case 4:
+                    nomeDia = "Quinta"
+                    break;
+                case 5:
+                    nomeDia = "Sexta"
+                    break;
+                case 6:
+                    nomeDia = "Sábado"
+                    
+            }
+ 
+			dataFormat = nomeDia + ", " + vdata + " de " + nomeMes + " de " + vano;
+			horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+ 
+			document.getElementById("data").innerHTML = dataFormat;
+			document.getElementById("hora").innerHTML = horaFormat;
+ 
+			setTimeout("atualizaRelogio()",1000);
+		}
+    
+    </script>
+
+</html>
