@@ -1,18 +1,19 @@
 @font-face{
                 font-family:'clockicons';
-                src: url('clockicons.woff2') format('woff2');
+                src: url('../../assets/fonts/clockicons.woff2') format('woff2');
                 font-weight: normal;
                 font-style:normal; 
             }
             
-            html, body{ 
-                height:100%;
+            * { 
                 margin:0;
                 padding:0;
             }
             
             .bg_image{
-                background-image:url(wallpaper%20blued.png);
+                height: 100vh;
+                background-color: #2b53c0;
+                /* background-image:url(../../assets/images/wallpaper.png); */
             }
             #fundo{
                 height:100%;

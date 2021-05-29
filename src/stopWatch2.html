@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="estilo_Relogio.css">
+        <link rel="stylesheet" href="css/estilo_Relogio.css">
         <style>
             html{
                 margin:0;
@@ -56,14 +56,14 @@ function stopstart() {
     if (0 == tmr[2]) {
         clearInterval(tmr[4]);
         tmr[3] += tmr[1] - tmr[0];
-        document.getElementById("playpause").src = "images/play-solid.svg";
+        document.getElementById("playpause").src = "../assets/images/play-solid.svg";
         tmr[4] = tmr[1] = tmr[0] = 0;
         disp();
         firstsplitflag = 0;
     } else {
-        document.getElementById("playpause").src = "images/pause-solid.svg";
+        document.getElementById("playpause").src = "../assets/images/pause-solid.svg";
         tmr[4] = setInterval(disp, 1);
-        tmr[8] = setInterval(overTime, 1000);
+        // tmr[8] = setInterval(overTime, 1000);
     }
 }
 
@@ -76,8 +76,7 @@ function dosplit() {
 function reset_it() {
     if (tmr[2]) stopstart();
     tmr[4] = tmr[3] = tmr[2] = tmr[1] = tmr[0] = 0;
-    document.getElementById('fundo').style.backgroundColor = "white";
-    document.getElementById('fundo').setAttribute("class", "bg_image");
+    document.getElementById('fundo').style.removeProperty('background-color');
     disp();
     document.getElementById('split').innerHTML = '';
     tmr[7] = 1;
@@ -119,14 +118,13 @@ function loopThroughClass(className, newValue) {
     }
 }
 
-function overTime(){
-    limite = new Date(1970, 1, 1, 0, 0, 0, 0).valueOf();
-    atual = (tmr[3] + tmr[1] - tmr[0] + tmr[5]).valueOf();
-    if(atual >= limite){
-        document.getElementById('fundo').removeAttribute("class");
-        document.getElementById('fundo').style.backgroundColor = "red";
-    }
-}
+// function overTime(){
+//     limite = new Date(1970, 1, 1, 0, 50, 0, 0).valueOf();
+//     atual = (tmr[3] + tmr[1] - tmr[0] + tmr[5]).valueOf();
+//     if(atual >= limite){
+//         document.getElementById('fundo').style.setProperty("background-color", "red");
+//     }
+// }
             
  //         Fullscreen       ***********************************************
     function launchIntoFullscreen(element) {
@@ -152,13 +150,13 @@ function overTime(){
         <div id="disp2"></div>
             <div class="bt_wrapper">
             <a href="#" class="botao" onclick="stopstart()" name="startstopbutton" id="startstopbutton" class="spwBTN">
-                <img id="playpause" src="images/play-solid.svg" width="50px" height="50px">
+                <img id="playpause" src="../assets/images/play-solid.svg" width="50px" height="50px">
             </a>
             <a href="#" class="botao" onclick="dosplit()"   name="splitbutton" id="splitbutton" title="Split"  class="spwBTN">
-                <img src="images/stopwatch-solid.svg" width="50px" height="50px">
+                <img src="../assets/images/stopwatch-solid.svg" width="50px" height="50px">
             </a>
             <a href="#" class="botao" onclick="reset_it()"  name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
-                <img src="images/stop-solid.svg" width="50px" height="50px">
+                <img src="../assets/images/stop-solid.svg" width="50px" height="50px">
             </a>
             </div>
             <button id="Fullscreen" onClick="launchIntoFullscreen(document.documentElement)"></button>
