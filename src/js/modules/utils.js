@@ -5,7 +5,6 @@ function diaFormatado(data) {
     let dia = _diaParaTexto(data.getDay() + 1);
     let mes = _mesParaTexto(data.getMonth() + 1);
     let ano = data.getFullYear();
-
     return `${dia}, ${_preencheZero(dataMes)} de ${mes} de ${ano}`;
 }
 
@@ -13,14 +12,13 @@ function horaFormatada(data) {
     let hora = data.getHours();
     let minuto = data.getMinutes();
     let segundo = data.getSeconds();
-    return  _preencheZero(hora) + ":" + _preencheZero(minuto) + ":" + _preencheZero(segundo);
+    return  `${_preencheZero(hora)}:${_preencheZero(minuto)}:${_preencheZero(segundo)}`;
 }
 
 function _preencheZero(string) {    
     if(string < 10) {
         string = "0".concat(string);
     }
-
     return string;
 }
 

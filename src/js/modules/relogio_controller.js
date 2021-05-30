@@ -6,7 +6,6 @@ const viewDia = document.querySelector('#diaView');
 
 function inicializaRelogio() {
     _atualizaRelogio();
-
 }
 
 function _atualizaRelogio() { 
