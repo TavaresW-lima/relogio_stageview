@@ -51,7 +51,7 @@
                 background:rgba(255, 255, 255, 1);;
             }
             
-            #demo{
+            .texto-relogio {
                font-family: "clockicons",sans-serif;
                font-size: 18em;
                width:100%;
@@ -73,7 +73,7 @@
                color:#ffffff;
             }
             
-            #data{
+           .texto-data {
                 font-family: sans-serif;
                 font-size: 3.5em;
                 width:100%;
