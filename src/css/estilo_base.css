@@ -1,3 +1,4 @@
+@import "./estilo_modal.css";
 @font-face{
     font-family:'clockicons';
     src: url('../../assets/fonts/clockicons.woff2') format('woff2');
@@ -10,13 +11,18 @@
     padding:0;
 }
 
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .bg_default{
     height: 100vh;
     background-color: #2b53c0;
 }
 
 .texto-relogio {
-    font-family: "clockicons",sans-serif;
+    font-family: "clockicons",sans-serif !important;
     font-size: 18em;
     width:100%;
     height:auto;
