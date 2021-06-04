@@ -1,0 +1,38 @@
+html{
+    margin:0;
+    padding:0;
+}
+
+.content_wrapper {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cronometro_wrapper {
+    width:auto;
+    height:auto;
+}
+
+.bt_wrapper {
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 10px 0 0;
+    font-size: 4em;
+}
+
+.align-end {
+    margin-left: auto;
+}
+
+.botao :hover {
+    color: rgb(179, 179, 179) !important;
+}
+
+.botao :active {
+    color:rgb(148, 148, 148) !important;
+}

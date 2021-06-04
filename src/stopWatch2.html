@@ -1,166 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
     <head>
-        <link rel="stylesheet" href="css/estilo_Relogio.css">
-        <style>
-            html{
-                margin:0;
-                padding:0;
-            }
-            .mili{
-                font-size: 0.3em;
-                margin-left:-15px;
-            }
-            .wrapper{
-                margin-left:50px;
-            }
-            
-            .wrapper p{
-                margin:0;
-            }
-            .botao{
-                width:50px;
-                height:50px;
-                text-decoration: none;   
-            }
-            .botao:focus{
-                background:rgba(0, 0, 0, 0.58);
-                outline: none;
-                border:none;
-            }
-            .bt_wrapper{
-                width:auto;
-                height:auto;
-                position: absolute;
-                bottom:-75;
-            }
-            #disp2{
-                font-size:15em;
-            }
-            
-            #fullscreen{
-                position: absolute;
-                bottom:-75;
-            }
-        
-        </style>
-        <script>
-
-var origPageTitle = document.title;
-var tmr = [0, 0, 0, 0, 0, 0, 0, 1, 0];
-var firstsplitflag = 0;
-var splittime;
-
-function stopstart() {
-    tmr[tmr[2]] = (new Date()).valueOf();
-    tmr[2] = 1 - tmr[2];
-    if (0 == tmr[2]) {
-        clearInterval(tmr[4]);
-        tmr[3] += tmr[1] - tmr[0];
-        document.getElementById("playpause").src = "../assets/images/play-solid.svg";
-        tmr[4] = tmr[1] = tmr[0] = 0;
-        disp();
-        firstsplitflag = 0;
-    } else {
-        document.getElementById("playpause").src = "../assets/images/pause-solid.svg";
-        tmr[4] = setInterval(disp, 1);
-        // tmr[8] = setInterval(overTime, 1000);
-    }
-}
-
-function dosplit() {
-    if (0 !== tmr[2]) {
-        document.getElementById('split').innerHTML += (tmr[7]++) + ' Split: ' + format(tmr[1] - tmr[0]) + '<br>';
-    }
-}
-
-function reset_it() {
-    if (tmr[2]) stopstart();
-    tmr[4] = tmr[3] = tmr[2] = tmr[1] = tmr[0] = 0;
-    document.getElementById('fundo').style.removeProperty('background-color');
-    disp();
-    document.getElementById('split').innerHTML = '';
-    tmr[7] = 1;
-}
-
-function disp() {
-    if (tmr[2]) tmr[1] = (new Date()).valueOf();
-    tmr[6].innerHTML = '<p>' + format(tmr[3] + tmr[1] - tmr[0]) + '</p>';
-    if ((navigator.cookieEnabled) && (tmr[3] + tmr[1] - tmr[0] !== 0)) {
-        document.title = format2(tmr[3] + tmr[1] - tmr[0]) + "";
-    } else {
-        document.title = origPageTitle;
-    }
-}
-
-function format(ms) {
-    var d = new Date(ms + tmr[5]).toString().replace(/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/, '$1');
-    var x = String(ms % 100);
-    while (x.length < 2) x = '0' + x;
-    d += '<span class="mili">' + '.' + x + '</span>';
-    return d;
-}
-
-function format2(ms) {
-    var d = new Date(ms + tmr[5]).toString().replace(/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/, '$1');
-    return d;
-}
-
-function load() {
-    tmr[5] = new Date(1970, 1, 1, 0, 0, 0, 0).valueOf();
-    tmr[6] = document.getElementById('disp2');
-    disp();
-}
-
-function loopThroughClass(className, newValue) {
-    var elements = document.getElementsByClassName(className);
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.color = newValue;
-    }
-}
-
-// function overTime(){
-//     limite = new Date(1970, 1, 1, 0, 50, 0, 0).valueOf();
-//     atual = (tmr[3] + tmr[1] - tmr[0] + tmr[5]).valueOf();
-//     if(atual >= limite){
-//         document.getElementById('fundo').style.setProperty("background-color", "red");
-//     }
-// }
-            
- //         Fullscreen       ***********************************************
-    function launchIntoFullscreen(element) {
-      if(element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if(element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if(element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if(element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-    }    
-    //*************************************************************************
-            
-</script>
-    
-    
+        <link rel="stylesheet" href="css/estilo_base.css">
+        <link rel="stylesheet" href="css/estilo_cronometro.css">
+        <script src="https://kit.fontawesome.com/dea90e7a9c.js" crossorigin="anonymous"></script>
     </head>
-    <body onload="load();">
-            <div id="fundo" class="bg_image"></div>
-        <div class="wrapper">
-        <div id="disp2"></div>
-            <div class="bt_wrapper">
-            <a href="#" class="botao" onclick="stopstart()" name="startstopbutton" id="startstopbutton" class="spwBTN">
-                <img id="playpause" src="../assets/images/play-solid.svg" width="50px" height="50px">
-            </a>
-            <a href="#" class="botao" onclick="dosplit()"   name="splitbutton" id="splitbutton" title="Split"  class="spwBTN">
-                <img src="../assets/images/stopwatch-solid.svg" width="50px" height="50px">
-            </a>
-            <a href="#" class="botao" onclick="reset_it()"  name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
-                <img src="../assets/images/stop-solid.svg" width="50px" height="50px">
-            </a>
+    <body>
+        <div class="bg_default content_wrapper">
+        <div class="cronometro_wrapper">
+            <div id="cronometroContainer" class="texto-relogio">
+                <span id="cronometroView"></span>
             </div>
-            <button id="Fullscreen" onClick="launchIntoFullscreen(document.documentElement)"></button>
+            <div class="bt_wrapper">
+                <a href="#" id="play-pause" class="botao" name="startstopbutton" id="startstopbutton" class="spwBTN">
+                    <i style="color: white" class="fas fa-play fa-fw"></i>
+                </a>
+                <a href="#" id="stop" class="botao" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
+                    <i style="color: white" class="fas fa-stop fa-fw"></i>
+                </a>
+                <a href="#" id="edit" class="botao align-end" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
+                    <i style="color: white" class="fas fa-edit fa-fw"></i>
+                </a>
+            </div>
         </div>
-        <div id="split" class="spwSPLT"></div>
+        <div style="color: white" id="teste"></div>
+        </div>
+        <script type="module" src="./js/main-cronometro.js"></script>
     </body>
 </html>
