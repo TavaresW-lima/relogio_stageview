@@ -1,87 +1,18 @@
-@font-face{
-                font-family:'clockicons';
-                src: url('../../assets/fonts/clockicons.woff2') format('woff2');
-                font-weight: normal;
-                font-style:normal; 
-            }
-            
-            * { 
-                margin:0;
-                padding:0;
-            }
-            
-            .bg_image{
-                height: 100vh;
-                background-color: #2b53c0;
-                /* background-image:url(../../assets/images/wallpaper.png); */
-            }
-            #fundo{
-                height:100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                filter: blur(10px);
-                transition: all 1s ease; 
-            }
-            .wrapper{
-                position:absolute;
-                top:40%;
-                left:48%;
-                transform: translate(-50%, -50%);
-            }
-            
-            #Fullscreen{
-                
-                border-radius: 50%;
-                width:25px;
-                height:25px;
-                outline: none;
-                border-color: white;
-                border-style: solid;
-                border-width: 3px;
-                background: rgba(255, 255, 255, 0);
-                cursor:pointer;
-                margin-left: 90%;
-                transition-property: background;
-                transition-duration: 0.5s;
-                transition-timing-function: ease;
-            }
-            
-            #Fullscreen:hover{
-                background:rgba(255, 255, 255, 1);;
-            }
-            
-            .texto-relogio {
-               font-family: "clockicons",sans-serif;
-               font-size: 18em;
-               width:100%;
-               height:auto;
-               text-align: center;
-               box-sizing:border-box;
-               padding:15% 0 0;
-               color:#ffffff;
-            }
+.wrapper{
+    position:absolute;
+    top:40%;
+    left:48%;
+    transform: translate(-50%, -50%);
+}
 
-             #disp2{
-               font-family: "clockicons",sans-serif;
-               font-size: 12em;
-               width:100%;
-               height:auto;
-               text-align: center;
-               box-sizing:border-box;
-               padding:15% 0 0;
-               color:#ffffff;
-            }
-            
-           .texto-data {
-                font-family: sans-serif;
-                font-size: 3.5em;
-                width:100%;
-                height:auto;
-                text-align: center;
-                box-sizing:border-box;
-                color:#ffffff;
-                padding-left:75px;
-            }
-            
-        
+.texto-data {
+    font-family: sans-serif;
+    font-size: 3.5em;
+    width:100%;
+    height:auto;
+    text-align: center;
+    box-sizing:border-box;
+    color:#ffffff;
+    padding-left:75px;
+}
+

@@ -5,17 +5,17 @@ function diaFormatado(data) {
     let dia = _diaParaTexto(data.getDay() + 1);
     let mes = _mesParaTexto(data.getMonth() + 1);
     let ano = data.getFullYear();
-    return `${dia}, ${_preencheZero(dataMes)} de ${mes} de ${ano}`;
+    return `${dia}, ${preencheZero(dataMes)} de ${mes} de ${ano}`;
 }
 
 function horaFormatada(data) {
     let hora = data.getHours();
     let minuto = data.getMinutes();
     let segundo = data.getSeconds();
-    return  `${_preencheZero(hora)}:${_preencheZero(minuto)}:${_preencheZero(segundo)}`;
+    return  `${preencheZero(hora)}:${preencheZero(minuto)}:${preencheZero(segundo)}`;
 }
 
-function _preencheZero(string) {    
+function preencheZero(string) {    
     if(string < 10) {
         string = "0".concat(string);
     }
@@ -38,4 +38,16 @@ function _diaParaTexto(dia) {
     }
 }
 
-export {diaFormatado, horaFormatada}
+function miliParaSegundo(mili) {
+    return mili/1000;
+}
+
+function formataMili(mili) {
+    if(mili < 100) {
+        return preencheZero(mili);
+    } else {
+        return mili;
+    }
+}
+
+export {diaFormatado, horaFormatada,preencheZero, miliParaSegundo}
