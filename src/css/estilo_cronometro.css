@@ -1,3 +1,10 @@
+@font-face{
+    font-family:'clockicons';
+    src: url('../../assets/fonts/clockicons.woff2') format('woff2');
+    font-weight: normal;
+    font-style:normal; 
+}
+
 html{
     margin:0;
     padding:0;
@@ -35,4 +42,13 @@ html{
 
 .botao :active {
     color:rgb(148, 148, 148) !important;
+}
+
+.edit-input {
+    font-size: 5em;
+    font-family: "clockicons",sans-serif !important;
+    background: transparent;
+    color: rgb(61, 61, 61) !important;
+    border: 2px solid rgb(61, 61, 61);
+    width:50%;
 }

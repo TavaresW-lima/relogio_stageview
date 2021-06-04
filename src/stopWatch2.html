@@ -7,23 +7,34 @@
     </head>
     <body>
         <div class="bg_default content_wrapper">
-        <div class="cronometro_wrapper">
-            <div id="cronometroContainer" class="texto-relogio">
-                <span id="cronometroView"></span>
-            </div>
-            <div class="bt_wrapper">
-                <a href="#" id="play-pause" class="botao" name="startstopbutton" id="startstopbutton" class="spwBTN">
-                    <i style="color: white" class="fas fa-play fa-fw"></i>
-                </a>
-                <a href="#" id="stop" class="botao" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
-                    <i style="color: white" class="fas fa-stop fa-fw"></i>
-                </a>
-                <a href="#" id="edit" class="botao align-end" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
-                    <i style="color: white" class="fas fa-edit fa-fw"></i>
-                </a>
+            <div class="cronometro_wrapper">
+                <div id="cronometroContainer" class="texto-relogio">
+                    <span id="cronometroView"></span>
+                </div>
+                <div class="bt_wrapper">
+                    <a href="#" id="play-pause" class="botao" name="startstopbutton" id="startstopbutton" class="spwBTN">
+                        <i style="color: white" class="fas fa-play fa-fw"></i>
+                    </a>
+                    <a href="#" id="stop" class="botao" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
+                        <i style="color: white" class="fas fa-stop fa-fw"></i>
+                    </a>
+                    <a href="#" id="edit" class="botao align-end" name="resetbutton" id="resetbutton" title="Reset" class="spwBTN">
+                        <i style="color: white" class="fas fa-edit fa-fw"></i>
+                    </a>
+                </div>
             </div>
         </div>
-        <div style="color: white" id="teste"></div>
+        <div id="modal_edicao" class="modal">
+            <div class="modal_wrapper">
+                <div class="modal_header">
+                    <h1>Tempo inicial(minutos):</h1>
+                    <span class="modal_close">&times;</span>
+                </div>
+                <div class="modal_content">
+                    <input id="inputEdit" type="number" class="edit-input" value="0" max="120"/>
+                    <button id="editOk" type="button">OK</button>
+                </div>
+            </div>
         </div>
         <script type="module" src="./js/main-cronometro.js"></script>
     </body>

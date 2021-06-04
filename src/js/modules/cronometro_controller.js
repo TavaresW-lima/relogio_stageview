@@ -2,8 +2,13 @@ import { miliParaSegundo, preencheZero } from './utils.js';
 
 const viewCronometro = document.querySelector("#cronometroView");
 const playPause = document.querySelector("#play-pause");
+const editButton = document.querySelector("#edit");
 const iconePlayPause = playPause.firstElementChild;
 const stopButton = document.querySelector("#stop");
+const modal = document.querySelector("#modal_edicao");
+const close = document.querySelector(".modal_close");
+const input = document.querySelector("#inputEdit");
+const editOk = document.querySelector("#editOk");
 
 let contagemTempo = 0;
 let intervalTempo;
@@ -13,6 +18,7 @@ function carregaCronometro() {
     contagemTempo = 0;
     playPause.addEventListener('click', start);
     stopButton.addEventListener('click', reset);
+    editButton.addEventListener('click', startEdit);
     atualizaCronometro();
 }
 
@@ -43,6 +49,22 @@ function reset() {
     _trocaPlayPause();
 }
 
+function startEdit() {
+    stop();
+    modal.style.display = "flex";
+    editOk.addEventListener('click', endEdit);
+    input.addEventListener('focusout', () => {
+        if(input.value > 50) input.value = 50;
+    })
+    close.addEventListener('click', _fechaModal);
+}
+
+function endEdit() {
+    contagemTempo = input.value * 60;
+    atualizaCronometro();
+    _fechaModal();
+}
+
 
 function formataCronometro(momentoAtual) {
     let horas = Math.floor(momentoAtual/3600);
@@ -61,6 +83,10 @@ function _trocaPlayPause() {
         playPause.addEventListener('click', start);
         iconePlayPause.className = "fas fa-play fa-fw";
     }
+}
+
+function _fechaModal() {
+    modal.style.display = "none";
 }
 
 export {carregaCronometro}
