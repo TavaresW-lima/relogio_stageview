@@ -1,7 +1,7 @@
 @import "./estilo_modal.css";
 @font-face{
     font-family:'clockicons';
-    src: url('../../assets/fonts/clockicons.woff2') format('woff2');
+    src: url('../assets/fonts/clockicons.woff2') format('woff2');
     font-weight: normal;
     font-style:normal; 
 }

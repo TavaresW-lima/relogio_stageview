@@ -53,8 +53,12 @@ function startEdit() {
     stop();
     modal.style.display = "flex";
     editOk.addEventListener('click', endEdit);
+    input.focus();
     input.addEventListener('focusout', () => {
-        if(input.value > 50) input.value = 50;
+        input.focus();
+        if(input.value < 0) {
+            input.value = 0;
+        } else if(input.value > 50) input.value = 50;
     })
     close.addEventListener('click', _fechaModal);
 }
